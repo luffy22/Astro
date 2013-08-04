@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="2.5" client="administrator" method="upgrade">
+	<name>PKG_CBOOTSTRAP</name>
+	<packagename>cbootstrap</packagename>
+	<version>1.3.1</version>
+	<creationDate>August 2012</creationDate>
+	<author>Conflate</author>
+	<authorEmail>info@conflate.nl</authorEmail>
+	<authorUrl>http://www.conflate.nl</authorUrl>
+	<url>http://www.conflate.nl</url>
+	<packager>Conflate</packager>
+	<packagerurl>http://www.conflate.nl/joomla-extensions/joomla-bootstrap-integration.html</packagerurl>
+	<description>PKG_CBOOTSTRAP_DESC</description>
+	<update>http://www.conflate.nl</update>
+	
+	<files folder="packages">
+		<file type="component" id="com_cbootstrap" >com_cbootstrap.zip</file>
+		<file type="plugin" id="cbootstrap" group="system">plg_system_cbootstrap.zip</file>
+	</files>
+	
+	<languages>
+		<language tag="nl-NL">language/nl-NL.pkg_cbootstrap.sys.ini</language>
+		<language tag="en-GB">language/en-GB.pkg_cbootstrap.sys.ini</language>
+	</languages>
+	
+	<updateservers>
+        <server type="collection" priority="1" name="Conflate Extension Updates">http://www.conflate.nl/extensions/updates/conflate.xml</server>
+    </updateservers>
+</extension>
+

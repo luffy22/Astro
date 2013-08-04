@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- config.xml Joomla 2.5 $ -->
+<config>
+        <fieldset name="general" label="General">
+            <field name="filterby_seller_email" 
+            type="radio" 
+            label="Filter by seller email?"
+            description="If this field is set to Yes, the component will only allow IPN transactions from paypal.com that explicitly indicate that the email of the receiving paypal agrees exactly with the email address specified in the Seller Email field."
+            default="1"
+            >
+            <option value="1">No</option>
+            <option value="0">Yes</option>
+            </field>
+            
+            <field name="seller_email"
+            type="text"
+            size="60"
+            label="Seller Email"
+            description="This field is only needed if the Filter by seller email? field is set to Yes. If this is the case, only those transactions directed to the specified email address will be accepted by the FreePayPal IPN Component."
+            default="you@yourdomain.com"
+            />
+            
+            <field name="log_email"
+            type="text"
+            size="60"
+            label="Email for IPN transaction/error logging"
+            description="This is the destination email for logging transactions. This address will receive an email each time a transaction occurs. It also notifies you if there are technical problems in a transaction and each time a subscriptions or timed payment is triggered. Basically, this email address is a log of all the paypal transactions processed by the IPN component and can be quite useful for documentation purposes."
+            default="you@yourdomain.com" 
+            />
+            
+            <field name="log_from_name"
+            type="text"
+            size="60"
+            label="Logging Emails come from this name"
+            description="This is the name shown as the sender of the logging emails, perhaps FreePayPal IPN Component is an appropriate field entry here."
+            default="FreePayPal IPN Component" 
+            />
+            
+            <field name="log_from_email"
+            type="text"
+            size="60"
+            label="Logging Emails come from this email address"
+            description="This is the email address used by Joomla to send the logging emails."
+            default="you@yourdomain.com" 
+            />
+            
+            <field name="company_name"
+            type="text"
+            size="60"
+            label="Logging Email title Company Name"
+            description="This is a string that is inserted into the title of the email which might indicate the title of your company, website, non-profit organization. It is simply a field that allows one to control what appears in the title of the sent logging emails."
+            default="FreePayPal Component" 
+            />
+            
+            <field name="donor_thanks_msg"
+            type="textarea"
+            rows="5"
+            cols="68"
+            label="Thanks Message"
+            description="If configured in conjunction with the freepaypal module, this will be the message displayed to the user when they return to the site after successfully completing their donation (typically this is some sort of thank you message)."
+            default="Thanks for your contribution!"
+            />
+            
+            <field name="donor_cancel_msg"
+            type="textarea"
+            rows="5"
+            cols="68"
+            label="Cancel Message"
+            description="If configured in conjunction with the freepaypal module, this will be the message displayed to the user when they return to the site after canceling their donation."
+            default="We're sorry you could not complete your donation transaction."
+            />
+            
+            <field name="debug"
+            type="radio"
+            label="Debugging On/Off"
+            description=""
+            default="0">
+            <option value="0">Off</option>
+            <option value="1">On</option>
+            </field>
+        </fieldset>
+            
+            <!-- addons -->
+        <fieldset name="list_donors" label="Donors List">
+            <field name="list_donors_viewoption"
+            type="list"
+            label="Donors: View Option"
+            description="Standard = shows list of donors normally, Anonymous = shows list of donors and anonymizes their names, Not Available = disables the list donors function."
+            default="1">
+            <option value='1'>Standard</option>
+            <option value='3'>Not Available</option>
+            </field>
+            
+            <field name="list_donors_num_donors"
+            type="text"
+            size="60"
+            label="Donors: List Length"
+            description="How many donors will be displayed (0 = all donors)"
+            default="10"
+            />
+            
+            <field name="list_donors_timeinterval_type"
+            type="list"
+            label="Donors: Time Interval"
+            description="Period over which donors will be drawn."
+            default="4">
+            <option value='1'>Weekly</option>
+            <option value='2'>Monthly</option>
+            <option value='3'>Yearly</option>
+            <option value='4'>None</option>
+            </field>
+            
+            <field name="list_donors_table_titles"
+            type="textarea"
+            rows="2"
+            cols="68"
+            label="Donors: Table Column Titles"
+            description="This specifies the strings that will be placed at the top of each column of the donor listing table. Each column title is separated by a comma which cannot be included as part of a column title."
+            default="Date, Amount, Name, option_name1, option_name2" 
+            />
+            
+            <field name="list_donors_table_fields"
+            type="textarea"
+            rows="2"
+            cols="68"
+            label="Donors: Table Column Fields"
+            description="This specifies the fields from the transaction database that will be placed in each column of the donor listing table. Each column field is separated by a comma and must be either a constant string or a valid field name from the transaction database. Database field names must be preceded by a $ character and constants cannot start with this character. The list of available fields can be found by selecting the transactions link. Multiple fields may be placed in a column by listing the field names separated by a series of spaces."
+            default="$payment_date, $mc_gross, Anonymous Donor, $option_selection1, $option_selection2"
+            />
+            
+        </fieldset>
+        <fieldset name="top_donors" label="Top Donors List">
+            <field name="top_donors_viewoption"
+            type="list"
+            label="Top Donors: View Option"
+            description="Standard = shows list of donors normally, Not Available = disables the top donors function."
+            default="1"
+            >
+            <option value='1'>Standard</option>
+            <option value='3'>Not Available</option>
+            </field>
+            
+            <field name="top_donors_num_donors"
+            type="text"
+            size="40"
+            label="Top Donors: List Length"
+            description="How many donors will be displayed on the top donor list (0 = all donors)"
+            default="5"
+            />
+            
+            <field name="top_donors_timeinterval_type"
+            type="list"
+            label="Top Donors: Time Interval"
+            description="Period over which top donors will be drawn."
+            default="4"
+            >
+            <option value='1'>Weekly</option>
+            <option value='2'>Monthly</option>
+            <option value='3'>Yearly</option>
+            <option value='4'>None</option>
+            </field>
+            
+            <field name="top_donors_table_titles"
+            type="textarea"
+            rows="2"
+            cols="68"
+            label="Top Donors: Table Column Titles"
+            description="This specifies the strings that will be placed at the top of each column of the donor listing table. Each column title is separated by a comma which cannot be included as part of a column title."
+            default="Amount, $, First Name, Last Name"
+            />
+            
+            <field name="top_donors_table_fields"
+            type="textarea"
+            rows="2"
+            cols="68"
+            label="Top Donors: Table Column Fields"
+            description="This specifies the fields from the transaction database that will be placed in each column of the donor listing table. Each column field is separated by a comma and must be either a constant string or a valid field name from the transaction database. Database field names must be preceded by a $ character and constants cannot start with this character. The list of available fields can be found by selecting the transactions link. The top donors view also has the special field, $sum_mc_gross, that is the total gross value of each person's donations within the time specified by the Top Donors: Time Interval field (above). Multiple fields may be placed in a column by listing the field names separated by a series of spaces."
+            default="$sum_mc_gross, $mc_currency, $first_name, Anonymous"
+            />
+            
+        </fieldset>
+        <fieldset name="random_donors" label="Random Donors List">
+            <field name="random_donors_viewoption"
+            type="list"
+            label="Random Donors (testing): View Option"
+            description="Standard = shows list of donors normally, Not Available = disables the random donors function."
+            default="1"
+            >
+            <option value='1'>Standard</option>
+            <option value='3'>Not Available</option>
+            </field>
+            
+            <field name="random_donors_num_donors"
+            type="text"
+            size="40"
+            label="Random Donors (testing): List Length"
+            description="How many donors will be displayed on the random donor list (0 = all donors)"
+            default="5" 
+            />
+            
+        </fieldset>
+        <fieldset name="recent_donors" label="Recent Donors List">
+            <field name="recent_donors_viewoption"
+            type="list"
+            label="Recent Donors: View Option"
+            description="Standard = shows list of donors normally, Not Available = disables the recent donors function."
+            default="1"
+            >
+            <option value='1'>Standard</option>
+            <option value='3'>Not Available</option>
+            </field>
+            
+            <field name="recent_donors_num_donors"
+            type="text"
+            size="40"
+            label="Recent Donors: List Length"
+            description="How many donors will be displayed on the recent donor list (0 = all donors)"
+            default="5"
+            />
+            
+            <field name="recent_donors_timeinterval_type"
+            type="list"
+            label="Recent Donors: Time Interval"
+            description="Period over which recent donors will be drawn."
+            default="3"
+            >
+            <option value='1'>Weekly</option>
+            <option value='2'>Monthly</option>
+            <option value='3'>Yearly</option>
+            <option value='4'>None</option>
+            </field>
+            
+            <field name="recent_donors_table_titles"
+            type="textarea"
+            rows="2"
+            cols="68"
+            label="Recent Donors: Table Column Titles"
+            description="This specifies the strings that will be placed at the top of each column of the donor listing table. Each column title is separated by a comma which cannot be included as part of a column title."
+            default="Date, Amount, Name"
+            />
+            
+            <field name="recent_donors_table_fields"
+            type="textarea"
+            rows="2"
+            cols="68"
+            label="Recent Donors: Table Column Fields"
+            description="This specifies the fields from the transaction database that will be placed in each column of the donor listing table. Each column field is separated by a comma and must be either a constant string or a valid field name from the transaction database. Database field names must be preceded by a $ character and constants cannot start with this character. The list of available fields can be found by selecting the transactions link. Multiple fields may be placed in a column by listing the field names separated by a series of spaces."
+            default="$payment_date, $mc_gross, Anonymous Donor"
+            />
+            
+        </fieldset>
+        <fieldset name="thermometer" label="Thermometer">
+            <field name="thermometer_graphic"
+            type="list"
+            label="Thermometer: Graphic Type"
+            description="Type of graphic used to render the thermometer. FlashVideo has animation and is visually appealing, SVG is scalable and visually appealing (not viewable in standard internet explorer), JPEG is lowest quality and required the server to have the php GD libraries installed."
+            default="1"
+            >
+            <option value='1'>FlashVideo</option>
+            <option value='2'>SVG</option>
+            <option value='3'>JPEG</option>
+            <option value='4'>HTML</option>
+            </field>
+            
+            <field name="thermometer_timeinterval_repeat"
+            type="radio"
+            label="Thermometer: Recurring Time Interval?"
+            description="If fixed, the start date and end date field determine the time interval for computing the thermometer value. If recurring, the recurring time interval length field will determine the time interval for computing the thermometer value." 
+            default="1"
+            >
+            <option value="0">Fixed</option>
+            <option value="1">Recurring</option>
+            </field>
+            
+            <field name="thermometer_timeinterval_type"
+            type="list"
+            label="Thermometer: Recurring Time Interval Length"
+            description="For recurring time intervals, this specified the period over which donations are summed to compute the thermometer value."
+            default="4"
+            >
+            <option value='1'>Weekly</option>
+            <option value='2'>Monthly</option>
+            <option value='3'>Yearly</option>
+            <option value='4'>None</option>
+            </field>
+            
+            <field name="thermometer_timeinterval_start_date"
+            type="calendar"
+            label="Thermometer: Start Date"
+            description="For fixed time intervals, this denotes the start date for computing the thermometer value."
+            default=""
+            />
+            
+            <field name="thermometer_timeinterval_end_date"
+            type="calendar"
+            label="Thermometer: End Date"
+            description="For fixed time intervals, this denotes the end date for computing the thermometer value."
+            default=""
+            />
+            
+            <field name="therm_unit"
+            type="text"
+            label="Thermometer: Unit"
+            description="Currency unit for the scale"
+            default = "$"
+            />
+            
+            <field name="therm_show_timeinterval"
+            type="radio"
+            label="Show Time Interval"
+            description="If set to On, the time interval will be displayed (Flash/HTML views only)"
+            default="2"
+            >
+            <option value="1">Off</option>
+            <option value="2">On</option>
+            </field>
+            
+            <field name="therm_show_remainder"
+            type="radio"
+            label="Thermometer: Show Amount Remaining"
+            description="If set to On, the amount remaining until the goal is reached is displayed (Flash/HTML views only)"
+            default="1"
+            >
+            <option value="1">Off</option>
+            <option value="2">On</option>
+            </field>
+            
+            <field name="therm_amount_view"
+            type="list"
+            label="Thermometer: Amount View"
+            description="Determines what values are shown on the thermometer."
+            default="1"
+            >
+            <option value='1'>Gross</option>
+            <option value='2'>Net</option>
+            <option value='3'>Gross and Net</option>
+            </field>
+            
+            <field name="therm_max"
+            type="text"
+            label="Thermometer: Max Value"
+            description="Maximum value of the thermometer. This is typically set to the same value as the goal value. It specifies the maximum value on the thermometer scale."
+            default = "100"
+            />
+            
+            <field name="thermometer_goalvalue"
+            type="text"
+            label="Thermometer: Goal Amount"
+            description="This number determines when the thermometer is completely red, typically your donation goal amount."
+            default = "100"
+            />
+            
+            <field name="therm_min"
+            type="text"
+            label="Thermometer: Min Value"
+            description="Minimum value of the thermometer."
+            default = "0.1"
+            />
+            
+            <field name="therm_width"
+            type="text"
+            label="Thermometer: Width of shaft"
+            description="Width (in pixels) of the thermometer shaft."
+            default = "40"
+            />
+            
+            <field name="therm_height"
+            type="text"
+            label="Thermometer: Height of thermometer"
+            description="Height (in pixels) of the thermometer shaft."
+            default = "100"
+            />
+            
+            <field name="therm_goalmsg_text"
+            type="text"
+            label="Thermometer: Goal Reached Message Text"
+            description="This message is displayed when the goal amount is reached (only available for FlashVideo)."
+            default = "We met our goal!"
+            />
+            
+            <field name="therm_goalmsg_color"
+            type="text"
+            label="Thermometer: Goal Reached Message Color"
+            description="Color of the goal reached message text (only used for FlashVideo)."
+            default = "#ffff00"
+            />
+            
+            <field name="therm_goalmsg_fontsize"
+            type="text"
+            label="Thermometer: Goal Reached Message Font Size"
+            description="Font size for the goal reached message text (only used for FlashVideo)."
+            default = "20"
+            />
+            
+            <field name="therm_textcolor"
+            type="text"
+            label="Thermometer: Text Color"
+            description="Color of the thermometer scale text (only used for FlashVideo and SVG graphic types)."
+            default="#ffffff"
+            />
+            
+            <field name="therm_bgcolor"
+            type="text"
+            label="Thermometer: Background Color"
+            description="Color of the thermometer background (only used for FlashVideo graphic type)."
+            default="#666666"
+            />
+            
+            <field name="therm_boundcolor"
+            type="text"
+            label="Thermometer: Boundary Color"
+            description="Color of the thermometer boundary (only used for FlashVideo and SVG graphic types)."
+            default = "#000000" 
+            />
+            
+            <field name="therm_scale"
+            type="text"
+            label="Thermometer: Scale Image"
+            description="Scales the image, values less than 1 shrink the image, values greater than 1 expand the image (only used by SVG graphic type)."
+            default = "1.0"
+            />
+            
+            <field name="thermometer_numdivisions"
+            type="text"
+            label="Thermometer: Number Big Divisions"
+            description="This determines the number of big divisions on the thermometer."
+            default="3"
+            />
+            
+            <field name="numSmallDivsPerBigDiv"
+            type="text"
+            label="Thermometer: Number Small Divisions"
+            description="Number of Small Divisions on scale in-between two large divisions"
+            default="4"
+            />
+            
+            <field name="therm_bulbpct"
+            type="radio"
+            label="Thermometer: Show Percentage in Bulb"
+            description="Should the percentage of goal be shown in the thermometer bulb?"
+            default="1"
+            >
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+            </field>
+            
+        </fieldset>
+        <fieldset name="bargraph" label="Bar Graph">
+            <field name="donor_bargraph_timeinterval_type"
+            type="list"
+            label="Bargraph (testing): Time Interval"
+            description="Donations received are summed over this time interval to compute the bars in the bargraph."
+            default="4"
+            >
+            <option value='1'>Weekly</option>
+            <option value='2'>Monthly</option>
+            <option value='3'>Yearly</option>
+            <option value='4'>None</option>
+            </field>
+            
+            <field name="donor_bargraph_num_timeintervals"
+            type="text"
+            label="Bargraph (testing): Num Time Intervals"
+            description="This determines the number of donations time intervals that will be displayed, i.e., the number of bars."
+            default="20"
+            />
+            
+            <field name="donor_bargraph_maxsize"
+            type="text"
+            label="Bargraph (testing): Maximum Size"
+            description="Maximum Size of the graph."
+            default="400"
+            />
+            
+            <field name="donor_bargraph_orientation"
+            type="radio"
+            label="Bargraph (testing): Orientation"
+            description="Portrait = vertical bars, Landscape = horizontal bars"
+            default="1"
+            >
+            <option value="0">Portrait</option>
+            <option value="1">Landscape</option>
+            </field>
+        </fieldset>
+</config>
+

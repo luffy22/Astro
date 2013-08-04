@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="template">
+    <name>Astro_Doc</name>
+    <creationDate>2013-02-04</creationDate>
+    <author>Mugiwara Luffy</author>
+    <authorEmail>gegabyte85.com</authorEmail>
+    <authorURL>http://www.google.co.in</authorURL>
+    <copyright>AstroDoc 2013</copyright>
+    <licence>GNU/GPL</licence>
+    <version>1.0</version>
+    <description>Default Template for AstroDoc</description>
+    <files>
+        <filename>index.php</filename>
+        <filename>templateDetails.xml</filename>
+        <folder>images</folder>
+	<folder>css</folder>
+	<folder>js</folder>
+    </files>
+    <positions>
+        <position>breadcrumb</position>
+        <position>login</position>
+        <position>paypal_right</position>
+        <position>footer</position>
+        <position>banner</position>
+        <position>topmenu1</position>
+        <position>topmenu2</position>
+        <position>topmenu3</position>
+        <position>topmenu4</position>
+        <position>topmenu5</position>
+        <position>topmenu</position>
+        <position>social plugins</position>
+        <position>header_(left)</position>
+        <position>header_(middle)</position>
+        <position>header_(right)</position>
+        <position>content_(middle)</position>
+    </positions>
+    
+</extension>

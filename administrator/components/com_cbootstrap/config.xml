@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<fieldset name="bootstrap" label="COM_CBOOTSTRAP" description="COM_CBOOTSTRAP_CONFIG_DESC">
+		<field name="en_bootstrap" type="list" default="0" label="COM_CBOOTSTRAP_CONFIG_ENABLE_BOOTSTRAP" description="COM_CBOOTSTRAP_CONFIG_ENABLE_BOOTSTRAP_DESC">
+			<option value="0">JNO</option>
+			<option value="1">COM_CBOOTSTRAP_CONFIG_ENABLE_BOOTSTRAP_SITE</option>
+			<option value="2">COM_CBOOTSTRAP_CONFIG_ENABLE_BOOTSTRAP_ADMIN</option>
+			<option value="3">COM_CBOOTSTRAP_CONFIG_ENABLE_BOOTSTRAP_BOTH</option>
+		</field>
+		<field name="load_respons" type="radio" default="1" label="COM_CBOOTSTRAP_CONFIG_LOAD_RESPONSIVE" description="COM_CBOOTSTRAP_CONFIG_LOAD_RESPONSIVE_DESC">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field name="en_jquery" type="list" default="0" label="COM_CBOOTSTRAP_CONFIG_JQUERY" description="COM_CBOOTSTRAP_CONFIG_JQUERY_DESC">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+			<option value="2">COM_CBOOTSTRAP_CONFIG_JQUERY_GOOGLE</option>
+		</field>
+		<field name="dis_mootools" type="radio" default="0" label="COM_CBOOTSTRAP_CONFIG_DISABLE_MOOTOOLS" description="COM_CBOOTSTRAP_CONFIG_DISABLE_MOOTOOLS_DESC">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		
+	</fieldset>
+
+	<fieldset name="permissions" label="JCONFIG_PERMISSIONS_LABEL" description="JCONFIG_PERMISSIONS_DESC">
+		<field name="rules" type="rules" label="JCONFIG_PERMISSIONS_LABEL" class="inputbox" validate="rules" filter="rules"	component="com_cbootstrap" section="component" />
+	</fieldset>
+ </config>

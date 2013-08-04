@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="system" method="upgrade">
+	<name>PLG_CBOOTSTRAP</name>
+	<author>Conflate</author>
+	<creationDate>April 2012</creationDate>
+	<copyright>(C) 2012 Conflate. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>info@conflate.nl</authorEmail>
+	<authorUrl>http://www.conflate.nl</authorUrl>
+	<version>1.0</version>
+	<description>PLG_CBOOTSTRAP_DESC</description>
+	
+	<scriptfile>install.php</scriptfile>
+					
+	<files>
+		<filename plugin="cbootstrap">cbootstrap.php</filename>
+		<filename>index.html</filename>
+	</files>
+	<languages>
+		<language tag="nl-NL">language/nl-NL.plg_system_cbootstrap.sys.ini</language>
+		<language tag="en-GB">language/en-GB.plg_system_cbootstrap.sys.ini</language>
+	</languages>
+	<config />
+</extension>

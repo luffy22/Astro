@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="2.5" client="site" method="upgrade">
+  <name>Free PayPal</name>
+  <author>Andrew Willis</author>
+  <creationDate>April 2010</creationDate>
+  <copyright>(C) 2008,2009,2010,2011 Andrew Willis, All rights reserved.</copyright>
+  <license>http://www.opensource.org/licenses/mit-license.php MIT</license>
+  <authorEmail>drew@willisfamily.homelinux.org</authorEmail>
+  <authorUrl>http://www.hr1.game-host.org</authorUrl>
+  <version>2.0</version>
+  <description>Manages paypal donations</description>  
+  <install>
+    <sql>
+      <file driver="mysql" charset="utf8">install.mysql.sql</file>
+    </sql>
+  </install>
+  
+  <uninstall>
+    <sql>
+      <file driver="mysql" charset="utf8">uninstall.mysql.sql</file>
+    </sql>
+  </uninstall>
+  
+  <files folder="site">
+    <filename>freepaypal.php</filename>
+    <filename>controller.php</filename>
+    <filename>ipn_cls.php</filename>
+    <filename>ipn_res.php</filename>
+    <filename>views/bargraph/view.html.php</filename>
+    <filename>views/bargraph/tmpl/default.php</filename>
+    <filename>views/donorbanner/view.html.php</filename>
+    <filename>views/donorbanner/tmpl/default.php</filename>
+    <filename>views/donorcanceled/view.html.php</filename>
+    <filename>views/donorcanceled/index.html</filename>
+    <filename>views/donorcanceled/tmpl/default.php</filename>
+    <filename>views/donorthanks/view.html.php</filename>
+    <filename>views/donorthanks/index.html</filename>
+    <filename>views/donorthanks/tmpl/default.php</filename>
+    <filename>views/listdonations/view.html.php</filename>
+    <filename>views/listdonations/sorttable.js</filename>
+    <filename>views/listdonations/tmpl/default.php</filename>
+    <filename>views/recentdonors/view.html.php</filename>
+    <filename>views/recentdonors/tmpl/default.php</filename>
+    <filename>views/thermometer/view.html.php</filename>
+    <filename>views/thermometer/thermometer.svg.php</filename>
+    <filename>views/thermometer/tmpl/default.php</filename>
+    <filename>views/thermometer/swfobject/swfobject.js</filename>
+    <filename>views/thermometer/images/FreeSans.ttf</filename>
+    <filename>views/thermometer/images/burst.jpg</filename>
+    <filename>views/thermometer/images/therm.jpg</filename>
+    <filename>views/thermometer/images/thermbar.jpg</filename>
+    <filename>views/thermometer/images/thermometer1.svg</filename>
+    <filename>views/thermometer/images/thermometer2.svg</filename>
+    <filename>views/thermometer/images/thermometer3.svg</filename>
+    <filename>views/thermometer/images/gauge.swf</filename>
+    <filename>views/thermometer/images/thermometer.xml</filename>
+    <filename>views/thermometer/images/temp.swf</filename>
+    <filename>views/topdonors/view.html.php</filename>
+    <filename>views/topdonors/tmpl/default.php</filename>
+  </files>
+  <languages folder="language/en-GB">
+	<language tag="en-GB">en-GB.com_freepaypal.ini</language>
+  </languages>
+  <languages folder="language/fr-FR">
+	<language tag="fr-FR">fr-FR.com_freepaypal.ini</language>
+  </languages>
+  <administration>
+    <menu>FreePayPal</menu>
+    <submenu>
+      <menu view="freepaypal">Configuration</menu>
+      <menu view="transactions">Transactions</menu>
+      <menu view="items">Items</menu>
+      <menu view="backup">Backup and Restore</menu>
+    </submenu>
+    <files folder="admin">
+      <filename>install.mysql.sql</filename>
+      <filename>uninstall.mysql.sql</filename>
+      <filename>config.xml</filename>
+      <filename>controller.php</filename>
+      <filename>admin.freepaypal.php</filename>
+      <filename>admin.freepaypal.html.php</filename>
+      <filename>controllers/backup.php</filename> 
+      <filename>controllers/freepaypal.php</filename> 
+      <filename>controllers/items.php</filename> 
+      <filename>controllers/transactions.php</filename> 
+      <filename>models/backup.php</filename> 
+      <filename>models/freepaypal.php</filename> 
+      <filename>models/item.php</filename>
+      <filename>models/items.php</filename>
+      <filename>models/transaction.php</filename>
+      <filename>models/transactions.php</filename>
+      <filename>tables/freepaypal_transactions.php</filename>
+      <filename>tables/freepaypal_items.php</filename>
+      <filename>views/backup/view.html.php</filename>
+      <filename>views/freepaypal/view.html.php</filename>
+      <filename>views/item/view.html.php</filename>
+      <filename>views/item/tmpl/form.php</filename>
+      <filename>views/items/view.html.php</filename>
+      <filename>views/items/tmpl/default.php</filename>
+      <filename>views/transaction/view.html.php</filename>
+      <filename>views/transaction/tmpl/form.php</filename>
+      <filename>views/transactions/view.html.php</filename>
+      <filename>views/transactions/tmpl/default.php</filename>
+    </files>    
+  </administration>
+
+  <!-- installation part -->
+  <installfile>install.freepaypal.php</installfile>
+  <config>
+    <fields name="params">
+        <fieldset name="general" label="General">
+            <field name="filterby_seller_email" default="1" />
+            <field name="seller_email" default="you@yourdomain.com" />
+            <field name="log_email" default="you@yourdomain.com" />
+            <field name="log_from_name" default="FreePayPal IPN Component" />
+            <field name="log_from_email" default="you@yourdomain.com" />
+            <field name="company_name" default="FreePayPal Component" />
+            <field name="donor_thanks_msg" default="Thanks for your contribution!" />
+            <field name="donor_cancel_msg" default="We're sorry you could not complete your donation transaction." />
+            <field name="debug" default="0" />
+	</fieldset>
+            <!-- addons -->
+        <fieldset name="list_donors" label="Donors List">
+            <field name="list_donors_viewoption" default="1" />
+            <field name="list_donors_num_donors" default="10" />
+            <field name="list_donors_timeinterval_type" default="4" />
+            <field name="list_donors_table_titles" default="Date, Amount, Name, option_name1, option_name2" />
+            <field name="list_donors_table_fields" default="$payment_date, $mc_gross, Anonymous Donor, $option_selection1, $option_selection2" />
+	</fieldset>
+        <fieldset name="top_donors" label="Top Donors List">            
+            <field name="top_donors_viewoption" default="1" />
+            <field name="top_donors_num_donors" default="5" />
+            <field name="top_donors_timeinterval_type" default="4" />
+            <field name="top_donors_table_titles" default="Amount, $, First Name, Last Name" />
+            <field name="top_donors_table_fields" default="$sum_mc_gross, $mc_currency, $first_name, Anonymous" />
+	</fieldset>
+        <fieldset name="random_donors" label="Random Donors List">
+            <field name="random_donors_viewoption" default="1" />
+            <field name="random_donors_num_donors" default="5" />
+	</fieldset>
+        <fieldset name="recent_donors" label="Recent Donors List">
+            <field name="recent_donors_viewoption" default="1" />
+            <field name="recent_donors_num_donors" default="5" />
+            <field name="recent_donors_timeinterval_type" default="3" />
+            <field name="recent_donors_table_titles" default="Date, Amount, Name" />
+            <field name="recent_donors_table_fields" default="$payment_date, $mc_gross, Anonymous Donor" />
+	</fieldset>
+        <fieldset name="thermometer" label="Thermometer">
+            <field name="thermometer_graphic" default="1" />
+            <field name="thermometer_timeinterval_repeat" default="1" />
+            <field name="thermometer_timeinterval_type" default="4" />
+            <field name="thermometer_timeinterval_start_date" default="" />
+            <field name="thermometer_timeinterval_end_date" default="" />
+            <field name="therm_unit" default = "$" />
+            <field name="therm_show_timeinterval" default = "2" />
+            <field name="therm_show_remainder" default = "1" />
+            <field name="therm_amount_view" default = "1" />
+            <field name="therm_max" default = "100" />
+            <field name="thermometer_goalvalue" default="100" />
+            <field name="therm_min" default = "0.1" />
+            <field name="therm_width" default = "40" />
+            <field name="therm_height" default = "100" />
+            <field name="therm_goalmsg_text" default = "We met our goal!" />
+            <field name="therm_goalmsg_color" default = "#ffff00" />
+            <field name="therm_goalmsg_fontsize" default = "20" />
+            <field name="therm_textcolor" default = "#ffffff" />
+            <field name="therm_bgcolor" default = "#666666" />
+            <field name="therm_boundcolor" default = "#000000" />
+            <field name="therm_scale" default = "1.0" />
+            <field name="thermometer_numdivisions" default="3" />
+            <field name="numSmallDivsPerBigDiv" default = "4" />
+            <field name="therm_bulbpct" default = "1" />
+        </fieldset>
+        <fieldset name="bargraph" label="Bar Graph">
+            <field name="donor_bargraph_timeinterval_type" default="4" />
+            <field name="donor_bargraph_num_timeintervals" default="20" />
+            <field name="donor_bargraph_maxsize" default="400" />
+            <field name="donor_bargraph_orientation" default="1" />
+        </fieldset>
+    </fields>
+  </config>
+</extension>
